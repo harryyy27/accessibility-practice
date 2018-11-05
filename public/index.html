@@ -39,7 +39,29 @@
                 </div>
             </nav>
             <h1>This website is accessible</h1>
-            <button>Sign In</button>
+            <div role="modal container">
+                    <button tabindex="2" 
+                            id="button-signin"
+                            aria-controls="modal"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                       SignIN
+                    </button>
+                </div>
+                <div id="modal" 
+                         role="modal"
+                         aria-modal="false"
+                         aria-labelledby="sign-in"
+                         class="modal-hidden">
+                    <button id="modal-close"aria-label="close-signin" tabindex="2">X</button>
+                    <h2 id="sign-in"> Sign In</h2>                    
+                    <div id="input-wrapper" role="input-container">
+                        <label id="elabel" for="email">E-mail</label>
+                        <input id="email" aria-labelledby="elabel" tabindex="2"/>
+                        <label id="plabel" for="password">Password</label>
+                        <input id="password" aria-labelledby="plabel" tabindex="2"/>
+                    </div>
+                </div>
         </header>
         <script src="./script.js"></script>
     </body>

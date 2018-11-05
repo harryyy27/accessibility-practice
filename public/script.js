@@ -1,6 +1,9 @@
 var nav = document.getElementById("nav-wrapper");
 var menuBtn = document.getElementById("button-menu");
 var menuLinks = document.querySelectorAll(".navbar_item");
+var signBtn  = document.getElementById('button-signin');
+var modal = document.getElementById('modal');
+var closeMod = document.getElementById('modal-close');
 
 menuBtn.addEventListener("click", function() {
     if(nav.className === "menu-closed menu-invisible" || nav.className === "menu-closed") {
@@ -21,3 +24,15 @@ menuBtn.addEventListener("click", function() {
         }, 500)
     }
 })
+
+signBtn.addEventListener("click", function(){
+    modal.setAttribute("class", "modal-open");
+    modal.setAttribute("aria-modal", "true");
+    modal.firstElementChild.focus()
+});
+
+closeMod.addEventListener("click", function () {
+    modal.setAttribute("class", "modal-hidden");
+    modal.setAttribute("aria-modal", "false");
+    signBtn.focus();
+});
