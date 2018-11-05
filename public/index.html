@@ -1,11 +1,46 @@
 <! DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Practicing accessibility">        
         <title>
-            <link href="./style.css" rel="stylesheet" type="text/css"/>
+            Accessible Nav and Modal
         </title>
+        <link href="./style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>WADDUP</h1>
+        <header id="header-container">
+            <nav id="nav-container"
+                 aria-haspopup="menu"
+                 aria-labelledby="menuLabel">
+                <button id="button-menu"
+                        tabindex="1"
+                        aria-controls="nav-bar"
+                        aria-expanded="false">
+                    Menu
+                </button>
+                <div id="nav-wrapper"
+                     role="nav-wrapper"
+                     aria-hidden="true"
+                     class="menu-closed menu-invisible">
+                    <h2 id="menuLabel">Menu</h2>
+                    <ul role="nav-bar"
+                        >
+                        <li role="menuitem"
+                            tabindex="1"
+                            class="navbar_item"><a href="#">One</a></li>
+                        <li role="menuitem"
+                            tabindex="1"
+                            class="navbar_item"><a href="##">Two</a></li>
+                        <li role="menuitem"
+                            tabindex="1"
+                            class="navbar_item"><a href="###">Three</a></li>                        
+                    </ul>
+                </div>
+            </nav>
+            <h1>This website is accessible</h1>
+            <button>Sign In</button>
+        </header>
+        <script src="./script.js"></script>
     </body>
 </html>
