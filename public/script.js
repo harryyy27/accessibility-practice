@@ -4,6 +4,7 @@ var menuLinks = document.querySelectorAll(".navbar_item");
 var signBtn  = document.getElementById('button-signin');
 var modal = document.getElementById('modal');
 var closeMod = document.getElementById('modal-close');
+var inputWrapper = document.getElementById('input-wrapper');
 
 menuBtn.addEventListener("click", function() {
     if(nav.className === "menu-closed menu-invisible" || nav.className === "menu-closed") {
@@ -36,3 +37,22 @@ closeMod.addEventListener("click", function () {
     modal.setAttribute("aria-modal", "false");
     signBtn.focus();
 });
+
+document.addEventListener("keydown", function(event) {
+    console.log(event.key)
+    switch(event.key) {
+        case 'Tab':
+        if(document.activeElement===inputWrapper.lastElementChild && !event.shiftKey){
+            event.preventDefault();
+            modal.firstElementChild.focus();
+        }
+        else if(event.shiftKey && document.activeElement===closeMod) {
+            event.preventDefault();
+            inputWrapper.lastElementChild.focus();
+        }
+        break;
+        default:
+        break;
+    }
+    
+})
