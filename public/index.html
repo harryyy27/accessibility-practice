@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="Practicing accessibility">        
+        <meta name="description" content="Practicing accessibility">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">       
         <title>
             Accessible Nav and Modal
         </title>
@@ -15,8 +16,8 @@
                  aria-haspopup="menu"
                  aria-labelledby="menuLabel">
                 <button id="button-menu"
-                        tabindex="1"
-                        aria-controls="nav-bar"
+                        tabindex="0"
+                        aria-controls="nav-wrapper"
                         aria-expanded="false">
                     Menu
                 </button>
@@ -26,43 +27,47 @@
                      class="menu-closed menu-invisible">
                     <h2 id="menuLabel">Menu</h2>
                     <ul role="nav-bar"
+                        id="nav-bar"
                         >
                         <li role="menuitem"
-                            tabindex="1"
-                            class="navbar_item"><a href="#">One</a></li>
+                            class="navbar_item">
+                            <a href="#" tabindex="-1">One</a>
+                        </li>
                         <li role="menuitem"
-                            tabindex="1"
-                            class="navbar_item"><a href="##">Two</a></li>
+                            class="navbar_item">
+                            <a href="##" tabindex="-1">Two</a>
+                        </li>
                         <li role="menuitem"
-                            tabindex="1"
-                            class="navbar_item"><a href="###">Three</a></li>                        
+                            class="navbar_item">
+                            <a href="###" tabindex="-1">Three</a>
+                        </li>                        
                     </ul>
                 </div>
             </nav>
             <h1>This website is accessible</h1>
             <div role="modal container">
-                    <button tabindex="2" 
+                    <button tabindex="0" 
                             id="button-signin"
                             aria-controls="modal"
                             aria-haspopup="true"
                             aria-expanded="false">
                        SignIN
                     </button>
-                </div>
-                <div id="modal" 
+            </div>
+            <div id="modal" 
                          role="modal"
                          aria-modal="false"
                          aria-labelledby="sign-in"
                          class="modal-hidden">
-                    <button id="modal-close"aria-label="close-signin" tabindex="2">X</button>
+                    <button id="modal-close"aria-label="close-signin" tabindex="-1">X</button>
                     <h2 id="sign-in"> Sign In</h2>                    
                     <div id="input-wrapper" role="input-container">
                         <label id="elabel" for="email">E-mail</label>
-                        <input id="email" aria-labelledby="elabel" tabindex="2"/>
+                        <input id="email" aria-labelledby="elabel" tabindex="-1"/>
                         <label id="plabel" for="password">Password</label>
-                        <input id="password" aria-labelledby="plabel" tabindex="2"/>
+                        <input id="password" aria-labelledby="plabel" tabindex="-1"/>
                     </div>
-                </div>
+            </div>
         </header>
         <script src="./script.js"></script>
     </body>

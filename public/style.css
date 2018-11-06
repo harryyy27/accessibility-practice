@@ -2,6 +2,10 @@ body {
     margin: 0
 }
 
+button {
+    font-size: 16px;
+}
+
 #header-container {
     position: fixed;
     width: 100%;
