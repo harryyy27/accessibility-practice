@@ -51,6 +51,13 @@ document.addEventListener("keydown", function(event) {
             inputWrapper.lastElementChild.focus();
         }
         break;
+        case 'Escape':
+       
+        if(modal.className==='modal-open') {
+            modal.setAttribute("class", "modal-hidden");
+            modal.setAttribute("aria-modal", "false");
+            signBtn.focus();
+        }
         default:
         break;
     }
