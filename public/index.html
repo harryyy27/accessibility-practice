@@ -7,8 +7,10 @@
         <title>
             Accessible Nav and Modal
         </title>
+        <link rel="manifest" href="/manifest.json">
         <link rel="shortcut icon" href="#" />
         <link href="./style.css" rel="stylesheet" type="text/css"/>
+        <link href="./print.css" rel="stylesheet" type="text/css" media="print"/>
     </head>
     <body>
         <header id="header-container">
@@ -45,14 +47,17 @@
                 </div>
             </nav>
             <h1>This website is accessible</h1>
-            <div role="modal container">
-                    <button tabindex="0" 
+            <div id="modal-container" 
+                 aria-haspopup="dialog"
+                 aria-label="modal=container">
+                 <button tabindex="0" 
                             id="button-signin"
                             aria-controls="modal"
                             aria-haspopup="true"
                             aria-expanded="false">
                        SignIN
-                    </button>
+                 </button>
+                 
             </div>
             <div id="modal" 
                          role="modal"
@@ -68,6 +73,7 @@
                         <input id="password" aria-labelledby="plabel" tabindex="-1"/>
                     </div>
             </div>
+            
         </header>
         <script src="./script.js"></script>
     </body>

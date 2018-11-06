@@ -26,6 +26,9 @@ menuBtn.addEventListener("click", function() {
         menuBtn.setAttribute("aria-expanded", "false");
         nav.setAttribute("aria-hidden", "true");
         nav.setAttribute("class", "menu-closed");
+        menuLinks.forEach(function(element){
+            element.firstElementChild.tabIndex=-1;
+        })
         setTimeout(function(){
             nav.setAttribute("class", "menu-closed menu-invisible");
         }, 500)
@@ -36,6 +39,11 @@ signBtn.addEventListener("click", function(){
   
     modal.setAttribute("class", "modal-open");
     modal.setAttribute("aria-modal", "true");
+    inputWrapper.querySelectorAll('input').forEach(function(element){
+        console.log(element);
+        element.tabIndex=0;
+    })
+    closeMod.tabIndex=0;
     modal.firstElementChild.focus();
     
 });
@@ -43,6 +51,11 @@ signBtn.addEventListener("click", function(){
 closeMod.addEventListener("click", function () {
     modal.setAttribute("class", "modal-hidden");
     modal.setAttribute("aria-modal", "false");
+    inputWrapper.querySelectorAll('input').forEach(function(element){
+        console.log(element);
+        element.tabIndex=-1;
+    })
+    closeMod.tabIndex=-1;
     signBtn.focus();
     
 });
