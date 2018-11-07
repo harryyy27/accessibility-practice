@@ -8,7 +8,10 @@ var closeMod = document.getElementById('modal-close');
 var inputWrapper = document.getElementById('input-wrapper');
 var focusable = Array.from(document.querySelectorAll('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(element=> element.tabIndex ===0);
 
-
+window.addEventListener("load", ()=> {
+    console.log('loaded');
+    focusable[0].focus();
+})
 menuBtn.addEventListener("click", function() {
     if(nav.className === "menu-closed menu-invisible" || nav.className === "menu-closed") {
         menuBtn.setAttribute("aria-expanded", "true");
