@@ -7,7 +7,12 @@ var modal = document.getElementById('modal');
 var closeMod = document.getElementById('modal-close');
 var inputWrapper = document.getElementById('input-wrapper');
 var focusable = Array.from(document.querySelectorAll('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(element=> element.tabIndex ===0);
-
+var canvas = document.querySelector('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+console.log(HTMLCanvasElement);
+var c = canvas.getContext('2d');
+c.fillRect(100, 100, 100, 100);
 window.addEventListener("load", ()=> {
     console.log('loaded');
     focusable[0].focus();
@@ -64,7 +69,7 @@ closeMod.addEventListener("click", function () {
 });
 
 document.addEventListener("keydown", function(event) {
-    
+    console.log(document.activeElement);
     switch(event.key) {
         case 'Tab':
         if(document.activeElement===focusable[focusable.length-1]&&!event.shiftKey){

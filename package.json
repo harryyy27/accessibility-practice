@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "coverage": "nyc",
-    "test": "nyc tape ./test/*test.spec.js ||tap-spec",
+    "test": "nyc tape ./test/*test.spec.js | tap-spec",
     "start": "nodemon src/server.js"
   },
   "repository": {
@@ -22,6 +22,7 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "jsdom": "^13.0.0",
     "nodemon": "^1.18.6",
     "nyc": "^13.1.0",
     "tap": "^12.0.1",

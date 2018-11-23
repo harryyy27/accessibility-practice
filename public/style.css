@@ -4,7 +4,12 @@ body {
 
 button {
     font-size: 16px;
+    background: white;
 }
+canvas {
+    border: 1px solid black;
+}
+
 
 #header-container {
     position: fixed;
@@ -26,9 +31,6 @@ button {
     background: linear-gradient(black, rgb(36, 36, 36));
 }
 
-button { 
-    background: white;
-}
 
 .menu-open {
     transform: translate3d(0vw, 0, 0);

@@ -1,4 +1,4 @@
-const test = require('tape');
+const test = require('tape').test;
 const JSDOM = require('jsdom').JSDOM;
 const fs = require('fs');
 const path = require('path');
@@ -36,7 +36,40 @@ test('menu opens and closes', (t) => {
     
     
 })
+test('tab and tab+shift scroll back and forward skipping navbar and modal', (t) => {
+    // const menuBtn = document.getElementById("button-menu");
+    // const signBtn  = document.getElementById('button-signin');
+//     var e = new KeyboardEvent("keydown", {bubbles : true, cancelable : true, key : "Q", char : "Q", shiftKey : true});
+// element.dispatchEvent(e);
 
+    simulateKeypress = (key,shift)=> {
+    var e = new KeyboardEvent("keydown", {
+        key: key,
+        keyCode: code,
+        which: e.keyCode,
+        altKey: false,
+        ctrlKey:  false,
+        shiftKey: shift,
+        metaKey: false,
+        bubbles: true,
+    });
+    
+   
+    
+    document.dispatchEvent(e);
+    }
+    
+    //FIGURE OUT EVENT CONSTRUCTOR AND CREATING JS
+    // console.log(event);
+    const focusable = Array.from(document.querySelectorAll('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(element=> element.tabIndex ===0);
+    console.log(document.activeElement.id);
+    t.equals(document.activeElement.id,focusable[0].id, "Tab starts on first focusable element");
+    simulateKeypress('Tab', true);
+    console.log(document.activeElement)
+    t.equals(document.activeElement.id, focusable[1].id, 'Tab goes to next focusable element');
+    t.end();
+
+})
 test('modal opens and closes', (t)=> {
     const signBtn  = document.getElementById('button-signin');
     const modal = document.getElementById('modal');
@@ -49,13 +82,5 @@ test('modal opens and closes', (t)=> {
     t.end();
 })
 
-// test('tab and tab+shift scroll back and forward skipping navbar and modal', (t) => {
-//     // const menuBtn = document.getElementById("button-menu");
-//     // const signBtn  = document.getElementById('button-signin');
-//     var focusable = Array.from(document.querySelectorAll('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(element=> element.tabIndex ===0);
-//     console.log(document.activeElement.id);
-//     t.equals(document.activeElement.id,focusable[0].id, "Tab starts on first focusable element");
-//     t.end();
 
-// })
 
