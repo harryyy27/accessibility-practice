@@ -7,12 +7,51 @@ var modal = document.getElementById('modal');
 var closeMod = document.getElementById('modal-close');
 var inputWrapper = document.getElementById('input-wrapper');
 var focusable = Array.from(document.querySelectorAll('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(element=> element.tabIndex ===0);
+
+//html canvas
 var canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 console.log(HTMLCanvasElement);
 var c = canvas.getContext('2d');
-c.fillRect(100, 100, 100, 100);
+
+// c.fillStyle = 'rgba(255, 0, 0, 0.5)';
+// c.fillRect(100, 200, 100, 100);
+// c.fillStyle = 'rgba(0, 255, 0, 0.5)';
+// c.fillRect(400, 200, 100, 100);
+// c.fillStyle = 'rgba(0, 0, 255, 0.5)';
+// c.fillRect(300, 400, 100, 100);
+
+// //line
+// c.beginPath()
+// c.moveTo(50, 400);
+// c.lineTo(300, 200);
+// c.lineTo(400, 400);
+// c.strokeStyle = '#fa34a3'
+// c.stroke();
+
+//arc
+// c.beginPath();
+// c.arc(300, 400, 30, 0, Math.PI*2, false);
+// c.strokeStyle = 'blue';
+// c.stroke();
+
+for(i=0; i<200; i++) {
+    var x = Math.random()* window.innerWidth;
+    var y = Math.random() *window.innerHeight;
+    var color1 = Math.floor(Math.random()*255).toString(16);
+    var color2 = Math.floor(Math.random()*255).toString(16);
+    var color3 = Math.floor(Math.random()*255).toString(16);
+    var color = '#'+color1+color2+color3;
+    console.log(color);
+    c.beginPath();
+    c.arc(x, y, 30, 0, Math.PI*2, false);
+    c.strokeStyle = color;
+    c.stroke();
+}
+
+//accessibility 
+
 window.addEventListener("load", ()=> {
     console.log('loaded');
     focusable[0].focus();
