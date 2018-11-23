@@ -51,16 +51,17 @@ var c = canvas.getContext('2d');
 // }
 
 //animating circle
-function Circle(x,y,dx,dy,radius) {
+function Circle(x,y,dx,dy,radius,color) {
     this.x = x;
     this.y= y;
     this.dx= dx;
     this.dy = dy;
-    this.radius = radius
+    this.radius = radius;
+    this.color = color;
     this.draw= function(){
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
-    c.strokeStyle= 'blue';
+    c.strokeStyle= color;
     c.stroke();
     }
     this.update = function() {
@@ -84,9 +85,14 @@ var y = Math.random()*(innerHeight-radius*2)+radius;
 var dx = (Math.random()-0.5)*5;
 var dy = (Math.random()-0.5)*5;
 var radius = 30;
-    circleArray.push(new Circle(x,y,dx,dy,radius))
+var color1 = Math.floor(Math.random()*255).toString(16);
+var color2 = Math.floor(Math.random()*255).toString(16);
+var color3 = Math.floor(Math.random()*255).toString(16);
+var color = '#'+color1+color2+color3;
+
+circleArray.push(new Circle(x,y,dx,dy,radius,color))
 }
-var circle = new Circle(x,y,dx,dy,radius);
+var circle = new Circle(x,y,dx,dy,radius,color);
 function animate() {
   
     requestAnimationFrame(animate)
