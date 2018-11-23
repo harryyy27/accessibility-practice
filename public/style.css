@@ -18,7 +18,7 @@ canvas {
     min-height: 100px;
     display: flex;
     justify-content: space-between;
-    background: black;
+    background: rgba(0, 0, 0, 0.8);
     align-items:  flex-end;
     color: white;
 }
