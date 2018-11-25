@@ -51,18 +51,30 @@ var c = canvas.getContext('2d');
 // }
 
 //animating circle
+var mouse = {
+    x: undefined,
+    y: undefined
+}
+var maxRadius = 40;
+
+window.addEventListener('mousemove', function(event){
+    mouse.x=event.x;
+    mouse.y=event.y;
+})
+
 function Circle(x,y,dx,dy,radius,color) {
     this.x = x;
     this.y= y;
     this.dx= dx;
     this.dy = dy;
     this.radius = radius;
+    this.minRadius = radius;
     this.color = color;
     this.draw= function(){
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
-    c.strokeStyle= color;
-    c.stroke();
+    c.fillStyle = this.color;
+    c.fill();
     }
     this.update = function() {
         if(this.x>(innerWidth-this.radius) || this.x<(0+this.radius)){
@@ -73,6 +85,15 @@ function Circle(x,y,dx,dy,radius,color) {
                 }
             this.x+=this.dx;
             this.y+=this.dy;
+
+            //interact with mouse
+            if(mouse.x-this.x<50&&mouse.x-this.x>-50&&mouse.y-this.y<50&&mouse.y-this.y>-50){
+                if(this.radius<maxRadius){
+                    this.radius+= 1;
+                }
+            } else if(this.radius>this.minRadius){
+                this.radius-=1;
+            }
             this.draw();
     }
 }
@@ -84,7 +105,7 @@ for(i=0; i<200; i++){
 var y = Math.random()*(innerHeight-radius*2)+radius;
 var dx = (Math.random()-0.5)*5;
 var dy = (Math.random()-0.5)*5;
-var radius = 30;
+var radius = (Math.random()*20+1)
 var color1 = Math.floor(Math.random()*255).toString(16);
 var color2 = Math.floor(Math.random()*255).toString(16);
 var color3 = Math.floor(Math.random()*255).toString(16);
