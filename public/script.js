@@ -67,6 +67,9 @@ function Circle(x,y,dx,dy,radius,color) {
     this.y= y;
     this.dx= dx;
     this.dy = dy;
+    this.ddx=0;
+    this.ddy=0;
+
     this.radius = radius;
     this.minRadius = radius;
     this.color = color;
@@ -85,13 +88,45 @@ function Circle(x,y,dx,dy,radius,color) {
                 }
             this.x+=this.dx;
             this.y+=this.dy;
+            //gravity mouse??
+            
+        if(Math.pow(Math.pow(mouse.x-this.x,2)+Math.pow(mouse.y-this.y,2),0.5 )<200){
+            if(Math.pow(Math.pow(mouse.x-this.x,2)+Math.pow(mouse.y-this.y,2),0.5 )===0){
+                this.ddy=0;
+                this.ddx=0;
+            }
+            else{
+            this.ddy=1*(this.y-mouse.y)/Math.pow(Math.pow(mouse.x-this.x,2)+Math.pow(mouse.y-this.y,2),0.5 );
+            console.log(this.x);
+            console.log(this.y);
+            this.ddx=1*(this.x-mouse.x)/Math.pow(Math.pow(mouse.x-this.x,2)+Math.pow(mouse.y-this.y,2),0.5 );
+            }
+            this.dx-=this.ddx;
+            this.dy-=this.ddy;
 
+
+        }
+        else{
+            this.ddx=0;
+            this.ddy=0;
+        }
             //interact with mouse
             if(mouse.x-this.x<50&&mouse.x-this.x>-50&&mouse.y-this.y<50&&mouse.y-this.y>-50){
+                color1 = Math.floor(Math.random()*255).toString(16);
+                color2 = Math.floor(Math.random()*255).toString(16);
+                color3 = Math.floor(Math.random()*255).toString(16);
+                color = '#'+color1+color2+color3;
+                this.color=color;
                 if(this.radius<maxRadius){
                     this.radius+= 1;
+                   
                 }
             } else if(this.radius>this.minRadius){
+                color1 = Math.floor(Math.random()*255).toString(16);
+                color2 = Math.floor(Math.random()*255).toString(16);
+                color3 = Math.floor(Math.random()*255).toString(16);
+                color = '#'+color1+color2+color3;
+                this.color=color;
                 this.radius-=1;
             }
             this.draw();
@@ -105,10 +140,11 @@ for(i=0; i<200; i++){
 var y = Math.random()*(innerHeight-radius*2)+radius;
 var dx = (Math.random()-0.5)*5;
 var dy = (Math.random()-0.5)*5;
-var radius = (Math.random()*20+1)
+var radius = (Math.random()*20+1);
 var color1 = Math.floor(Math.random()*255).toString(16);
 var color2 = Math.floor(Math.random()*255).toString(16);
 var color3 = Math.floor(Math.random()*255).toString(16);
+
 var color = '#'+color1+color2+color3;
 
 circleArray.push(new Circle(x,y,dx,dy,radius,color))
