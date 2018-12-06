@@ -1,4 +1,4 @@
-### Acessibility Practice ###
+# Acessibility Practice #
 
 Began as a simple accessibility and front-end testing exercise.. turned into a full blown HTML Canvas ball pit.
 
@@ -6,7 +6,7 @@ Began as a simple accessibility and front-end testing exercise.. turned into a f
 
 Used every accessibility trick in the book to make a very accessible navbar and modal.
   
-# Testing #
+## Testing ##
 
 Tested all front end functions with the exception of keydown event listeners.
   
